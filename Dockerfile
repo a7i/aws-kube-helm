@@ -5,7 +5,7 @@ LABEL author="a7i"
 
 ADD VERSION .
 ENV KUBECTL_VERSION 1.11.5
-ENV HELM_VERSION 2.12.0
+ENV HELM_VERSION 2.12.2
 
 RUN apk add --no-cache python \
   g++ \
