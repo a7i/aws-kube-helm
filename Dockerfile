@@ -27,7 +27,7 @@ RUN apk add --no-cache python \
   jq \
   && rc-update add docker boot \
   && rc-update add local boot \
-  && pip --no-cache-dir install awscli==1.16.40 \
+  && pip --no-cache-dir install awscli==1.16.140 \
   && rm -rf /var/cache/apk/*
 
 # Install kubectl
