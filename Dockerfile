@@ -8,6 +8,7 @@ ENV KUBECTL_VERSION 1.11.5
 ENV HELM_VERSION 2.12.2
 
 RUN apk add --no-cache python \
+  python3 \
   g++ \
   make \
   py-pip \
@@ -45,6 +46,5 @@ RUN curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-li
 # Install aws-iam-authenticator
 RUN curl -s -L -o /usr/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator \
   && chmod +x /usr/bin/aws-iam-authenticator
-
 
 WORKDIR /config
