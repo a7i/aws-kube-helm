@@ -4,8 +4,9 @@ FROM alpine:3.8
 LABEL author="a7i"
 
 ADD VERSION .
-ENV KUBECTL_VERSION 1.11.5
+ENV KUBECTL_VERSION 1.12.6
 ENV HELM_VERSION 2.12.2
+ENV ISTIO_VERSION 1.0.9
 
 RUN apk add --no-cache python \
   python3 \
@@ -46,5 +47,10 @@ RUN curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-li
 # Install aws-iam-authenticator
 RUN curl -s -L -o /usr/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator \
   && chmod +x /usr/bin/aws-iam-authenticator
+
+# Install istio-ctl
+RUN curl -sL https://github.com/istio/istio/releases/download/${ISTIO_VERSION}/istio-${ISTIO_VERSION}-linux.tar.gz | tar xz \
+  && mv istio-${ISTIO_VERSION}/bin/istioctl /usr/bin/istioctl \
+  && chmod +x /usr/bin/istioctl
 
 WORKDIR /config
